@@ -43,7 +43,7 @@ const Movies = () => {
               const { id, name, image, premiered, rating } = item.show;
               return (
                 <div key={id} className="rounded-lg mx-auto shadow-md hover:shadow-primary duration-300">
-                  <div className="flex flex-col">
+                  <Link to={`/movie/${id}`}  className="flex flex-col">
                     <div className="relative w-full min-h-[350px]">
                       <LazyLoadImage
                         alt={`${name} poster`}
@@ -69,11 +69,11 @@ const Movies = () => {
                         <h3 className="block text-black font-semibold text-xl hover:text-primary">{name}</h3>
                         <span className="text-neutral text-sm">{premiered}</span>
                       </div>
-                      <div>
-                        <Link to={`/movie/${id}`} >Detail</Link>
+                      <div className="px-2">
+                        <Link to={`/movie/${id}`} className="btn btn-primary ">Detail</Link>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               );
             })}
