@@ -30,7 +30,7 @@ const Header = () => {
             Join Us
           </NavLink>
           <NavLink to="/" className="hover:text-secondary duration-300">
-            Log In
+            Log Out
           </NavLink>
         </div>
       </div>
