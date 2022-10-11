@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import placeholder from "../../../assets/placeholder.jpg";
+import Loader from "../../../components/loader/Loader";
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -24,7 +25,7 @@ const Movies = () => {
   }, []);
 
   if (loading) {
-    return <div>this is the loading</div>;
+    return <Loader/>;
   }
 
   return (
