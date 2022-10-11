@@ -12,6 +12,7 @@ import BookingModal from "../../components/bookingModal/bookingModal";
 const MovieDetails = () => {
   const { id } = useParams();
   const [movies, setMovies] = useState([]);
+  const [isBooking, setBooking] = useState(false);
   const [thisMovie, setThisMovie] = useState({});
   const [loading, setLoading] = useState(false);
 
@@ -35,6 +36,17 @@ const MovieDetails = () => {
       setThisMovie(movies.find((item) => item?.show?.id == id))
     }
   },[id , movies])
+
+  useEffect(()=> {
+    const bookingData = localStorage.getItem('bookingData')
+    const parsed = JSON.parse(bookingData)
+    if(parsed?.id === thisMovie?.show?.id){
+      setBooking(true)
+    }
+
+  },[thisMovie])
+
+
 
   if (loading) {
     return <Loader />;
@@ -122,7 +134,7 @@ const MovieDetails = () => {
               </span>
             )}
           </div>
-          <label htmlFor="booking" className="btn btn-primary mt-4 modal-button">Book Ticket</label>
+          {isBooking ? <button className="btn btn-primary mt-4">Already Booked</button> : <label htmlFor="booking" className="btn btn-primary mt-4 modal-button">Book Ticket</label>}
         </div>
       </div>
 
@@ -157,7 +169,7 @@ const MovieDetails = () => {
 
         
       </div>
-      <BookingModal movie={thisMovie}/>
+      <BookingModal movie={thisMovie?.show}/>
     </div>
   );
 };
