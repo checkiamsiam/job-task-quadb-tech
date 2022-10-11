@@ -7,6 +7,7 @@ import placeholder from "../../assets/placeholder.jpg";
 import Loader from "../../components/loader/Loader.js";
 import axios from "axios";
 import Swal from "sweetalert2";
+import BookingModal from "../../components/bookingModal/bookingModal";
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -121,7 +122,7 @@ const MovieDetails = () => {
               </span>
             )}
           </div>
-          <button className="btn btn-primary mt-4">Book Ticket</button>
+          <label htmlFor="booking" className="btn btn-primary mt-4 modal-button">Book Ticket</label>
         </div>
       </div>
 
@@ -156,6 +157,7 @@ const MovieDetails = () => {
 
         
       </div>
+      <BookingModal movie={thisMovie}/>
     </div>
   );
 };
