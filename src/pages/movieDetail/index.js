@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { AiOutlineUser, AiOutlineWarning } from "react-icons/ai";
 import { MdHowToVote } from "react-icons/md";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import placeholder from "../../assets/placeholder.jpg";
@@ -12,7 +11,6 @@ import BookingModal from "../../components/bookingModal/bookingModal";
 const MovieDetails = () => {
   const { id } = useParams();
   const [movies, setMovies] = useState([]);
-  const [isBooking, setBooking] = useState(false);
   const [thisMovie, setThisMovie] = useState({});
   const [loading, setLoading] = useState(false);
 
@@ -37,14 +35,7 @@ const MovieDetails = () => {
     }
   },[id , movies])
 
-  useEffect(()=> {
-    const bookingData = localStorage.getItem('bookingData')
-    const parsed = JSON.parse(bookingData)
-    if(parsed?.id === thisMovie?.show?.id){
-      setBooking(true)
-    }
-
-  },[thisMovie])
+ 
 
 
 
@@ -134,7 +125,7 @@ const MovieDetails = () => {
               </span>
             )}
           </div>
-          {isBooking ? <button className="btn btn-primary mt-4">Already Booked</button> : <label htmlFor="booking" className="btn btn-primary mt-4 modal-button">Book Ticket</label>}
+          <label htmlFor="booking" className="btn btn-primary mt-4 modal-button">Book Ticket</label>
         </div>
       </div>
 
